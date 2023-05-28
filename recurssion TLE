@@ -1,10 +1,8 @@
 class Solution:
     def cutRod(self, price, n):
         def solve(price,i,lnth):
-            if i<0:
-                return 0
-            if lnth<=0:
-                return 0
+            if i==0:
+                return price[i]*lnth
             cut,no_cut=float('-inf'),float('-inf')
              
             if i+1<=lnth:
