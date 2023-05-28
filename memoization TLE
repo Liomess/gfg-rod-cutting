@@ -1,12 +1,8 @@
 class Solution:
     def cutRod(self, price, n):
         def solve(price,i,lnth,dp):
-            if i<0:
-                dp[i][lnth]=0
-                return dp[i][lnth] 
-            if lnth<=0:
-                dp[i][lnth]=0
-                return dp[i][lnth]
+            if i==0:
+                return price[i]*lnth
             if dp[i][lnth]!=-1:
                 return dp[i][lnth]
             cut,no_cut=float('-inf'),float('-inf')
@@ -16,6 +12,5 @@ class Solution:
             no_cut=solve(price,i-1,lnth,dp)
             dp[i][lnth]=max(cut,no_cut)
             return dp[i][lnth]
-        
-        dp=[[-1 for i in range(n+1)]for j in range(n+1)]        
+        dp=[[-1 for i in range(n+1)]for j in range(n+1)]
         return solve(price,n-1,n,dp)
