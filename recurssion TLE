@@ -1,0 +1,15 @@
+class Solution:
+    def cutRod(self, price, n):
+        def solve(price,i,lnth):
+            if i<0:
+                return 0
+            if lnth<=0:
+                return 0
+            cut,no_cut=float('-inf'),float('-inf')
+             
+            if i+1<=lnth:
+                cut=price[i]+solve(price,i,lnth-(i+1))
+            no_cut=solve(price,i-1,lnth)
+            return max(cut,no_cut)
+                 
+        return solve(price,n-1,n)
